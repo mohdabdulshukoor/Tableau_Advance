@@ -1,0 +1,25 @@
+Calculated Field: Waterfall
+
+
+Days Between:
+[Ship Date (Number)]-[Order Date (Number)]
+
+###################################
+
+Order Date (Number)
+MAX(DATEDIFF('day', #01-01-2000#, [Order Date]))
+####################################
+
+Negative Profit
+-SUM([Profit])
+
+####################################
+Ship Date (Number)
+MAX(DATEDIFF('day', #01-01-2000#, [Ship Date]))
+####################################
+
+
+####################################
+
+
+####################################

@@ -1,0 +1,86 @@
+
+L2_C4_SPRINT_2_CHALLENGE [CALCULATIONS]
+
+Create the following Calculated Fields : 
+Region + Segment 
+Segment + Region 
+Color Index 
+Region Index 
+Segment Index
+
+1. Region + Segment : [Region]+"-"+[Segment]
+
+ 2. Segment + Region : [Segment]+"-"+[Region] 
+
+3. Color : IF [@Color Dimensions] = "Region" THEN 
+              	[Region] 
+              ELSE [Segment] 
+              END 
+
+4. Index : INDEX() 
+
+5. Region Index : INDEX() 
+
+6. Segment Index : INDEX()
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Create the following Calculated Fields : 
+TC_Sales
+X 
+TC_Sales (Left) 
+TC Sales (Right)
+
+1. TC_Sales : WINDOW_SUM(SUM([Sales]))/ 2
+
+2. TC_Sales (Left) : 
+
+    IF [X] = 0 THEN 
+        WINDOW_SUM(SUM([Sales]))
+    ELSE
+        0
+    END / 2
+
+3. TC_Sales (Right) :
+
+    IF [X] = 1 THEN
+        WINDOW_SUM(SUM([Sales]))
+    ELSE
+        0
+    END / 2
+
+4. X :
+
+    IF [Index] = 1 OR [Index] = 4 THEN
+        0
+    ELSE 1
+    END
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Create the following Calculated Fields : 
+TC_Running Sales (Left)
+TC_Running Sales (Right)
+Y Sales (Left)
+
+1. TC_Running Sales (Left) : RUNNING_SUM([TC_Sales (Left)]) - [TC_Sales (Left)]
+
+2. TC_Running Sales (Right) : RUNNING_SUM([TC_Sales (Right)]) - [TC_Sales (Right)]
+
+3. Y :
+
+    IF [X] = 0 THEN
+        IF [Index] = 1 THEN 
+            [TC_Running Sales (Left)]
+        ELSEIF [Index] = 4 THEN 
+            [TC_Running Sales (Left)] + [TC_Sales (Left)]
+        END
+    ELSE
+        IF [Index] = 2 THEN
+            [TC_Running Sales (Right)]
+        ELSEIF [Index] = 3 THEN
+            [TC_Running Sales (Right)] + [TC_Sales (Right)]
+        END
+    END
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,23 @@
+Calculated Field: Podium Bar Chart
+
+TC_Rank:
+RANK_UNIQUE(SUM([Sales]))
+
+###################################
+
+TC_Median:
+INT(WINDOW_MEDIAN([TC_Rank]))
+
+####################################
+
+TC_Podium Order:
+
+IF [TC_Rank] = 1 THEN
+    [TC_Median]
+ELSEIF [TC_Rank]%2 <> 0 THEN
+    [TC_Median]+([TC_Rank]/2)-0.5
+ELSE
+    [TC_Median]-([TC_Rank]/2)
+END
+
+###################################

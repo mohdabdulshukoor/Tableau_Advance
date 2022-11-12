@@ -1,0 +1,32 @@
+2017 Year Indicator
+YEAR([Date])= {FIXED: MAX(YEAR([Date]))}
+
+2016 Year Indicator
+YEAR([Date])= {FIXED: MAX(YEAR([Date]))}-1
+
+2015 Year Indicator
+YEAR([Date])= {FIXED: MAX(YEAR([Date]))}-2
+
+MIN(0)
+MIN(0)
+
+Sales - 2017
+IFNULL(If [2017 Year Indicator] THEN [Sales] END,0)
+
+Sales - 2016
+IFNULL(If [2016 Year Indicator] THEN [Sales] END,0)
+
+Sales - 2015
+IFNULL(If [2015 Year Indicator] THEN [Sales] END,0)
+
+Sales(2015-2016) – Change $
+(SUM([Sales – 2016])-SUM([Sales - 2015]))
+
+Sales(2015-2016) – Change%
+(SUM([Sales – 2016])-SUM([Sales - 2015]))/SUM([Sales - 2015])
+
+Sales(2016-2017) – Change $
+(SUM([Sales – 2017])-SUM([Sales – 2016]))
+
+Sales(2016-2017) – Change%
+(SUM([Sales – 2017])-SUM([Sales – 2016]))/SUM([Sales – 2016])
